@@ -1,0 +1,16 @@
+{
+	"template": {
+		"settings": {
+			"index": {
+				"mapping": {
+					"total_fields": {
+						"limit": 3072
+					}
+				}
+			},
+			"refresh_interval": "30s",
+			"number_of_shards": "2",
+			"number_of_replicas": "1"
+		}
+	}
+}

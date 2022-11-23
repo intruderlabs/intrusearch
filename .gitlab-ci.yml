@@ -1,0 +1,11 @@
+include:
+  - project: 'intruderlabs/toolbox/pipelines'
+    file:
+      - 'golang/binary.yaml'
+
+stages:
+  - 'code check (style/quality)'
+  - 'security (sca/sast)'
+  - 'tests'
+  - 'delivery'
+  - 'deployment'

@@ -1,0 +1,107 @@
+{
+	"policy": {
+		"description": "Policy to use only hot nodes and rollover indexes",
+		"default_state": "hot",
+		"error_notification": {
+			"destination": {
+				"custom_webhook": {
+					"header_params": {
+						"x-api-key": "***REMOVED***"
+					},
+					"url": "***REMOVED***"
+				}
+			},
+			"message_template": {
+				"source": "{
+				\"message\": \"[OpenSearch ISM][${CUSTOMER_NAME}-${ENVIRONMENT}]: The index {{ctx.index}} failed during policy execution\",
+				\"error\": \"{{ctx.info.message}}\",
+				\"environment\": \"${ENVIRONMENT}\",
+				\"organization.name\": \"${CUSTOMER_NAME}\",
+				\"index\": \"{{ctx.index}}\"
+			}"
+		}
+	},
+	"states": [
+		{
+			"name": "hot",
+			"actions": [
+				{
+					"allocation": {
+						"require": { "temp": "hot" },
+						"wait_for": true
+					},
+					"retry": {
+						"count": 5,
+						"backoff": "exponential",
+						"delay": "30m"
+					}
+				}
+			],
+			"transitions": [
+				{
+					"state_name": "open"
+				}
+			]
+		},
+		{
+			"name": "open",
+			"actions": [
+				{
+					"rollover": {
+						"min_size" : "65gb",
+						"min_index_age" : "1d"
+					},
+					"retry": {
+						"count": 5,
+						"backoff": "exponential",
+						"delay": "30m"
+					}
+				}
+			],
+			"transitions": [
+				{
+					"state_name": "close"
+				}
+			]
+		},
+		{
+			"name": "close",
+			"actions": [
+				{
+					"read_only": {},
+					"retry": {
+						"count": 5,
+						"backoff": "exponential",
+						"delay": "30m"
+					}
+				}
+			],
+			"transitions": [
+				{
+					"state_name": "delete",
+					"conditions": {
+						"min_index_age": "${DEFAULT_DELETE_MIN_INDEX_AGE}"
+					}
+				}
+			]
+		},
+		{
+			"name": "delete",
+			"actions": [
+				{
+					"delete": {},
+					"retry": {
+						"count": 5,
+						"backoff": "exponential",
+						"delay": "30m"
+					}
+				}
+			],
+			"transitions": []
+		}
+	],
+	"ism_template" : {
+		"index_patterns": ["app_*","cloud_*","enpa_*","infra_*","neta_*","other_*","os_*","vuln_*"],
+		"priority": 25
+	}
+}
