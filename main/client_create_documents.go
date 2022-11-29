@@ -5,12 +5,12 @@ import (
 	"fmt"
 	"github.com/opensearch-project/opensearch-go/opensearchapi"
 	logger "github.com/sirupsen/logrus"
-	"gitlab.com/intruderlabs/toolbox/intrusearch/main/domain/entities"
-	derrors "gitlab.com/intruderlabs/toolbox/intrusearch/main/domain/errors"
-	"gitlab.com/intruderlabs/toolbox/intrusearch/main/domain/helpers"
-	dresponses "gitlab.com/intruderlabs/toolbox/intrusearch/main/domain/responses"
-	"gitlab.com/intruderlabs/toolbox/intrusearch/main/infrastructure/requests"
-	iresponses "gitlab.com/intruderlabs/toolbox/intrusearch/main/infrastructure/responses"
+	"gitlab.com/intruderlabs/toolbox/intrusearch.git/main/domain/entities"
+	derrors "gitlab.com/intruderlabs/toolbox/intrusearch.git/main/domain/errors"
+	"gitlab.com/intruderlabs/toolbox/intrusearch.git/main/domain/helpers"
+	dresponses "gitlab.com/intruderlabs/toolbox/intrusearch.git/main/domain/responses"
+	"gitlab.com/intruderlabs/toolbox/intrusearch.git/main/infrastructure/requests"
+	iresponses "gitlab.com/intruderlabs/toolbox/intrusearch.git/main/infrastructure/responses"
 	"strings"
 )
 

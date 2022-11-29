@@ -3,12 +3,12 @@ package intrusearch
 import (
 	"fmt"
 	logger "github.com/sirupsen/logrus"
-	"gitlab.com/intruderlabs/toolbox/intrusearch/main/domain/entities"
-	"gitlab.com/intruderlabs/toolbox/intrusearch/main/domain/errors"
-	"gitlab.com/intruderlabs/toolbox/intrusearch/main/domain/helpers"
-	domain "gitlab.com/intruderlabs/toolbox/intrusearch/main/domain/responses"
-	"gitlab.com/intruderlabs/toolbox/intrusearch/main/infrastructure/requests"
-	infra "gitlab.com/intruderlabs/toolbox/intrusearch/main/infrastructure/responses"
+	"gitlab.com/intruderlabs/toolbox/intrusearch.git/main/domain/entities"
+	"gitlab.com/intruderlabs/toolbox/intrusearch.git/main/domain/errors"
+	"gitlab.com/intruderlabs/toolbox/intrusearch.git/main/domain/helpers"
+	domain "gitlab.com/intruderlabs/toolbox/intrusearch.git/main/domain/responses"
+	"gitlab.com/intruderlabs/toolbox/intrusearch.git/main/infrastructure/requests"
+	infra "gitlab.com/intruderlabs/toolbox/intrusearch.git/main/infrastructure/responses"
 	"strings"
 )
 

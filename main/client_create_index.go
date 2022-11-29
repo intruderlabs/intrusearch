@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"github.com/opensearch-project/opensearch-go/opensearchapi"
 	logger "github.com/sirupsen/logrus"
-	"gitlab.com/intruderlabs/toolbox/intrusearch/main/domain/entities"
-	"gitlab.com/intruderlabs/toolbox/intrusearch/main/domain/errors"
-	"gitlab.com/intruderlabs/toolbox/intrusearch/main/domain/helpers"
-	"gitlab.com/intruderlabs/toolbox/intrusearch/main/infrastructure/requests"
+	"gitlab.com/intruderlabs/toolbox/intrusearch.git/main/domain/entities"
+	"gitlab.com/intruderlabs/toolbox/intrusearch.git/main/domain/errors"
+	"gitlab.com/intruderlabs/toolbox/intrusearch.git/main/domain/helpers"
+	"gitlab.com/intruderlabs/toolbox/intrusearch.git/main/infrastructure/requests"
 )
 
 func (itself Client) CreateIndex(indexName string) (bool, []errors.GenericError) {

@@ -3,10 +3,10 @@ package requests
 import (
 	"context"
 	"github.com/opensearch-project/opensearch-go/opensearchapi"
-	"gitlab.com/intruderlabs/toolbox/intrusearch/main/domain/errors"
-	"gitlab.com/intruderlabs/toolbox/intrusearch/main/domain/helpers"
-	domain "gitlab.com/intruderlabs/toolbox/intrusearch/main/domain/responses"
-	infra "gitlab.com/intruderlabs/toolbox/intrusearch/main/infrastructure/responses"
+	"gitlab.com/intruderlabs/toolbox/intrusearch.git/main/domain/errors"
+	"gitlab.com/intruderlabs/toolbox/intrusearch.git/main/domain/helpers"
+	domain "gitlab.com/intruderlabs/toolbox/intrusearch.git/main/domain/responses"
+	infra "gitlab.com/intruderlabs/toolbox/intrusearch.git/main/infrastructure/responses"
 	"net/http"
 )
 

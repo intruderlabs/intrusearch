@@ -1,6 +1,6 @@
 package errors
 
-import "gitlab.com/intruderlabs/toolbox/intrusearch/main/domain/helpers"
+import "gitlab.com/intruderlabs/toolbox/intrusearch.git/main/domain/helpers"
 
 type GenericError struct {
 	Type   string `json:"type"`

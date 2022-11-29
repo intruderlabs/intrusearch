@@ -4,9 +4,9 @@ import (
 	"errors"
 	"github.com/opensearch-project/opensearch-go/opensearchapi"
 	logger "github.com/sirupsen/logrus"
-	"gitlab.com/intruderlabs/toolbox/intrusearch/main/domain/entities"
-	derrors "gitlab.com/intruderlabs/toolbox/intrusearch/main/domain/errors"
-	"gitlab.com/intruderlabs/toolbox/intrusearch/main/infrastructure/requests"
+	"gitlab.com/intruderlabs/toolbox/intrusearch.git/main/domain/entities"
+	derrors "gitlab.com/intruderlabs/toolbox/intrusearch.git/main/domain/errors"
+	"gitlab.com/intruderlabs/toolbox/intrusearch.git/main/infrastructure/requests"
 )
 
 func (itself Client) Initialize(
