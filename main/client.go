@@ -2,6 +2,7 @@ package intrusearch
 
 import (
 	"crypto/tls"
+	"github.com/opensearch-project/opensearch-go"
 	"gitlab.com/intruderlabs/toolbox/intrusearch.git/main/infrastructure/loggers"
 	"net/http"
 )
