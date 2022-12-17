@@ -4,10 +4,12 @@ import (
 	"context"
 	"fmt"
 	"github.com/opensearch-project/opensearch-go/opensearchapi"
+	logger "github.com/sirupsen/logrus"
 	"gitlab.com/intruderlabs/toolbox/intrusearch.git/main/domain/errors"
 	"gitlab.com/intruderlabs/toolbox/intrusearch.git/main/domain/helpers"
 	domain "gitlab.com/intruderlabs/toolbox/intrusearch.git/main/domain/responses"
 	"gitlab.com/intruderlabs/toolbox/intrusearch.git/main/infrastructure/responses"
+	"io/ioutil"
 	"net/http"
 	"reflect"
 )
@@ -25,10 +27,16 @@ func DoRequest(transport opensearchapi.Transport, request opensearchapi.Request)
 		http.StatusNoContent: true,
 	}
 
+	bodyBytes, errReadAll := ioutil.ReadAll(response.Body)
+	if errReadAll != nil {
+		logger.Errorf("Couldn't read all the body content. Here's why: '%s'.", errReadAll)
+	}
+	defer response.Body.Close()
+
 	return mapFromRequestError(domain.GenericResponse{
-		err == nil && acceptedCodes[response.StatusCode],
-		response.StatusCode,
-		response.Body,
+		Success: err == nil && acceptedCodes[response.StatusCode],
+		Status:  response.StatusCode,
+		Body:    bodyBytes,
 	}, err)
 }
 
@@ -40,15 +48,14 @@ func mapFromRequestError(wrapper domain.GenericResponse, err error) (domain.Gene
 		mapped = append(mapped, errors.GenericError{"http_error", err.Error()})
 	} else {
 		unmappedResponse := map[string]interface{}{}
-		helpers.NewSerializationHelper().FromReader(wrapper.Body, &unmappedResponse)
+		helpers.NewSerializationHelper().FromBytes(wrapper.Body, &unmappedResponse)
 
 		rawValue, exists := unmappedResponse["error"]
 		if exists && reflect.ValueOf(rawValue).Kind() == reflect.String {
 			mapped = append(mapped, errors.GenericError{"http_error", fmt.Sprintf("%s", rawValue)})
 		} else {
-			serialized := helpers.NewSerializationHelper().ToString(unmappedResponse)
 			errorResponse := responses.GenericErrorResponse{}
-			helpers.NewSerializationHelper().Deserialize(serialized, &errorResponse)
+			helpers.NewSerializationHelper().FromBytes(wrapper.Body, &errorResponse)
 
 			// TODO: this needs to be moved to other place
 			if errorResponse.Status != 0 {
