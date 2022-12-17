@@ -23,6 +23,7 @@ Exceptions are acceptable depending on the circumstances (critical bug fixes tha
 ### Changed
 
 - corrected the error deserialization when it's not found response
+- corrected the attempt to read the `io.ReadCloser` more than once in the method `doRequest` - [RD-175](https://intruderlabs.atlassian.net/browse/RD-175)
 
 ### Removed
 

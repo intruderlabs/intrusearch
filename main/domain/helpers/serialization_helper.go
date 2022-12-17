@@ -4,8 +4,6 @@ import (
 	"bytes"
 	"encoding/json"
 	logger "github.com/sirupsen/logrus"
-	"io"
-	"io/ioutil"
 )
 
 type SerializationHelper struct {
@@ -23,21 +21,18 @@ func (itself SerializationHelper) ToReader(entity interface{}) *bytes.Reader {
 	return bytes.NewReader(itself.serialize(entity))
 }
 
-func (itself SerializationHelper) FromReader(body io.ReadCloser, entity any) {
-	defer body.Close()
-
-	bodyBytes, errReadAll := ioutil.ReadAll(body)
-	if errReadAll != nil {
-		logger.Errorf("Couldn't read all the body content. Here's why: '%s'.", errReadAll)
-	}
-
-	itself.Deserialize(string(bodyBytes), entity)
+func (itself SerializationHelper) FromString(serialized string, entity interface{}) {
+	itself.deserialize([]byte(serialized), entity)
 }
 
-func (itself SerializationHelper) Deserialize(serialized string, entity interface{}) {
-	errUnmarshal := json.Unmarshal([]byte(serialized), entity)
-	if errUnmarshal != nil {
-		logger.Errorf("Couldn't deserialize entity. Here's why: '%s'.", errUnmarshal)
+func (itself SerializationHelper) FromBytes(serialized []byte, entity interface{}) {
+	itself.deserialize(serialized, entity)
+}
+
+func (itself SerializationHelper) deserialize(serialized []byte, entity interface{}) {
+	err := json.Unmarshal(serialized, entity)
+	if err != nil {
+		logger.Errorf("Couldn't deserialize entity. Here's why: '%s'.", err)
 	}
 }
 
