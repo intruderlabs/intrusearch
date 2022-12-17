@@ -85,7 +85,7 @@ func NewIndexPolicy() *IndexPolicy {
 	policy.Policy.Description = "Policy to be used when the rollover is made with these steps: hot, open, close and delete"
 
 	policy.Policy.ErrorNotification.Destination.CustomWebhook.HeaderParams.XApiKey = ""
-	policy.Policy.ErrorNotification.Destination.CustomWebhook.Url = ""
+	policy.Policy.ErrorNotification.Destination.CustomWebhook.Url = "https://chat.googleapis.com/v1/spaces/XPTO/messages?key=THEKEYHERE"
 	policy.Policy.ErrorNotification.MessageTemplate.Source = "The index {{ctx.index}} failed during policy execution."
 
 	policy.Policy.DefaultState = "hot"
