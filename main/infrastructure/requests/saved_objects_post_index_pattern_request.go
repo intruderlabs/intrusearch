@@ -23,6 +23,7 @@ func (r SavedObjectsPostIndexPatternRequest) Do(
 
 	method = "POST"
 
+	// TODO: this is a OpenSearch Dashboards API. Without it, it doesn't work
 	relative := "_dashboards/api/saved_objects/index-pattern"
 	path.Grow(1 + len(relative))
 	path.WriteString("/")

@@ -40,7 +40,7 @@ func (itself Client) getIndexPolicy(name string) (entities.IndexPolicy, []errors
 
 	policy := entities.IndexPolicy{}
 	if wrapper.Success { // if there's no HTTP error at all
-		helpers.NewSerializationHelper().Deserialize(wrapper.Body, &policy)
+		helpers.NewSerializationHelper().FromReader(wrapper.Body, &policy)
 	}
 
 	return policy, mapped

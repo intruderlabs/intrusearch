@@ -43,7 +43,7 @@ func mapFromBulkResponse(
 
 	if wrapper.Success { // if there's no HTTP error at all
 		response := iresponses.BulkResponse{}
-		helpers.NewSerializationHelper().Deserialize(wrapper.Body, &response)
+		helpers.NewSerializationHelper().FromReader(wrapper.Body, &response)
 
 		result.Total = len(response.Items)
 		for _, item := range response.Items {

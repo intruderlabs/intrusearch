@@ -38,7 +38,7 @@ func (itself Client) getIndexPattern(name string) (entities.SavedObject, []error
 	var pattern entities.SavedObject
 	if wrapper.Success { // if there's no HTTP error at all
 		response := infra.SavedObjectsFindResponse{}
-		helpers.NewSerializationHelper().Deserialize(wrapper.Body, &response)
+		helpers.NewSerializationHelper().FromReader(wrapper.Body, &response)
 
 		for _, value := range response.SavedObjects {
 			if strings.Contains(value.Attributes.Title, name) {

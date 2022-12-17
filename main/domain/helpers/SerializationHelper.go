@@ -23,7 +23,7 @@ func (itself SerializationHelper) ToReader(entity interface{}) *bytes.Reader {
 	return bytes.NewReader(itself.serialize(entity))
 }
 
-func (itself SerializationHelper) Deserialize(body io.ReadCloser, entity any) {
+func (itself SerializationHelper) FromReader(body io.ReadCloser, entity any) {
 	defer body.Close()
 
 	bodyBytes, errReadAll := ioutil.ReadAll(body)
@@ -31,7 +31,11 @@ func (itself SerializationHelper) Deserialize(body io.ReadCloser, entity any) {
 		logger.Errorf("Couldn't read all the body content. Here's why: '%s'.", errReadAll)
 	}
 
-	errUnmarshal := json.Unmarshal(bodyBytes, entity)
+	itself.Deserialize(string(bodyBytes), entity)
+}
+
+func (itself SerializationHelper) Deserialize(serialized string, entity interface{}) {
+	errUnmarshal := json.Unmarshal([]byte(serialized), entity)
 	if errUnmarshal != nil {
 		logger.Errorf("Couldn't deserialize entity. Here's why: '%s'.", errUnmarshal)
 	}
