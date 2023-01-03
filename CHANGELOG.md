@@ -24,6 +24,8 @@ Exceptions are acceptable depending on the circumstances (critical bug fixes tha
 
 - corrected the error deserialization when it's not found response
 - corrected the attempt to read the `io.ReadCloser` more than once in the method `doRequest` - [RD-175](https://intruderlabs.atlassian.net/browse/RD-175)
+- created method for search with `hidra` - [RD-151](https://intruderlabs.atlassian.net/browse/RD-151)
+
 
 ### Removed
 
