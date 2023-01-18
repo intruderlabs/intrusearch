@@ -30,7 +30,7 @@ type OsResponse struct {
 			Index  string  `json:"_index"`
 			Type   string  `json:"_type"`
 			ID     string  `json:"_id"`
-			Source Source  `json:"source"`
+			Source Source  `json:"_source"`
 			Score  float64 `json:"_score"`
 		} `json:"hits"`
 	} `json:"hits"`
