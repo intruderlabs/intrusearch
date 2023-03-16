@@ -1,6 +1,6 @@
 module github.com/intruderlabs/intrusearch
 
-go 1.18
+go 1.20
 
 require (
 	github.com/opensearch-project/opensearch-go v1.1.0
