@@ -1,12 +1,12 @@
 package intrusearch
 
 import (
+	"github.com/intruderlabs/intrusearch/main/domain/entities"
+	"github.com/intruderlabs/intrusearch/main/domain/errors"
+	"github.com/intruderlabs/intrusearch/main/domain/helpers"
+	"github.com/intruderlabs/intrusearch/main/infrastructure/requests"
 	"github.com/opensearch-project/opensearch-go/opensearchapi"
 	logger "github.com/sirupsen/logrus"
-	"gitlab.com/intruderlabs/toolbox/intrusearch.git/main/domain/entities"
-	"gitlab.com/intruderlabs/toolbox/intrusearch.git/main/domain/errors"
-	"gitlab.com/intruderlabs/toolbox/intrusearch.git/main/domain/helpers"
-	"gitlab.com/intruderlabs/toolbox/intrusearch.git/main/infrastructure/requests"
 )
 
 func (itself Client) CreateIndexTemplate(

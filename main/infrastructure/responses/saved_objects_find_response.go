@@ -1,6 +1,6 @@
 package responses
 
-import "gitlab.com/intruderlabs/toolbox/intrusearch.git/main/domain/entities"
+import "github.com/intruderlabs/intrusearch/main/domain/entities"
 
 type SavedObjectsFindResponse struct {
 	Page         int                    `json:"page"`

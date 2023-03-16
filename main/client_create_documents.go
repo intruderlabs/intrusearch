@@ -3,14 +3,14 @@ package intrusearch
 import (
 	"errors"
 	"fmt"
+	"github.com/intruderlabs/intrusearch/main/domain/entities"
+	derrors "github.com/intruderlabs/intrusearch/main/domain/errors"
+	"github.com/intruderlabs/intrusearch/main/domain/helpers"
+	dresponses "github.com/intruderlabs/intrusearch/main/domain/responses"
+	"github.com/intruderlabs/intrusearch/main/infrastructure/requests"
+	iresponses "github.com/intruderlabs/intrusearch/main/infrastructure/responses"
 	"github.com/opensearch-project/opensearch-go/opensearchapi"
 	logger "github.com/sirupsen/logrus"
-	"gitlab.com/intruderlabs/toolbox/intrusearch.git/main/domain/entities"
-	derrors "gitlab.com/intruderlabs/toolbox/intrusearch.git/main/domain/errors"
-	"gitlab.com/intruderlabs/toolbox/intrusearch.git/main/domain/helpers"
-	dresponses "gitlab.com/intruderlabs/toolbox/intrusearch.git/main/domain/responses"
-	"gitlab.com/intruderlabs/toolbox/intrusearch.git/main/infrastructure/requests"
-	iresponses "gitlab.com/intruderlabs/toolbox/intrusearch.git/main/infrastructure/responses"
 	"strings"
 )
 

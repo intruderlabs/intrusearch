@@ -1,4 +1,4 @@
-module gitlab.com/intruderlabs/toolbox/intrusearch.git
+module github.com/intruderlabs/intrusearch
 
 go 1.18
 

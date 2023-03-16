@@ -1,11 +1,11 @@
 package intrusearch
 
 import (
-	"gitlab.com/intruderlabs/toolbox/intrusearch.git/main/domain/entities"
-	"gitlab.com/intruderlabs/toolbox/intrusearch.git/main/domain/errors"
-	dresponses "gitlab.com/intruderlabs/toolbox/intrusearch.git/main/domain/responses"
-	"gitlab.com/intruderlabs/toolbox/intrusearch.git/main/infrastructure/requests"
-	"gitlab.com/intruderlabs/toolbox/intrusearch.git/main/infrastructure/responses"
+	"github.com/intruderlabs/intrusearch/main/domain/entities"
+	"github.com/intruderlabs/intrusearch/main/domain/errors"
+	dresponses "github.com/intruderlabs/intrusearch/main/domain/responses"
+	"github.com/intruderlabs/intrusearch/main/infrastructure/requests"
+	"github.com/intruderlabs/intrusearch/main/infrastructure/responses"
 )
 
 type ClientInterface interface {

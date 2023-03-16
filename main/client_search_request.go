@@ -1,12 +1,12 @@
 package intrusearch
 
 import (
+	"github.com/intruderlabs/intrusearch/main/domain/errors"
+	"github.com/intruderlabs/intrusearch/main/domain/helpers"
+	"github.com/intruderlabs/intrusearch/main/infrastructure/requests"
+	"github.com/intruderlabs/intrusearch/main/infrastructure/responses"
 	"github.com/opensearch-project/opensearch-go/opensearchapi"
 	logger "github.com/sirupsen/logrus"
-	"gitlab.com/intruderlabs/toolbox/intrusearch.git/main/domain/errors"
-	"gitlab.com/intruderlabs/toolbox/intrusearch.git/main/domain/helpers"
-	"gitlab.com/intruderlabs/toolbox/intrusearch.git/main/infrastructure/requests"
-	"gitlab.com/intruderlabs/toolbox/intrusearch.git/main/infrastructure/responses"
 )
 
 func (itself Client) ClientSearchRequest(

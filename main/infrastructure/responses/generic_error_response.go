@@ -1,6 +1,6 @@
 package responses
 
-import "gitlab.com/intruderlabs/toolbox/intrusearch.git/main/domain/errors"
+import "github.com/intruderlabs/intrusearch/main/domain/errors"
 
 type GenericErrorResponse struct {
 	Status int `json:"status"`
