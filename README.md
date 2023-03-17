@@ -1,6 +1,12 @@
 # IntruSearch
 
-Intrusearch is a library written in Go that provides a simple, fast and reliable way to search for data in a set of files.
+__IntruSearch__ is a lightweight Go client library developed by IntruderLabs for the OpenSearch search engine. It provides a simple yet powerful abstraction layer over the OpenSearch API, allowing developers to easily query and manipulate search indices.
+
+Built on top of the official OpenSearch Go client library, IntruSearch enhances it with additional functionality and ease-of-use features. It supports all major OpenSearch features such as querying, filtering, aggregations, sorting, and more.
+
+__IntruSearch__ is designed to be easy to use and easy to integrate into your Go applications. It is fully compatible with the latest version of OpenSearch and has been thoroughly tested for stability and performance.
+
+If you're looking for a fast and efficient way to interact with OpenSearch from your Go code, look no further than __IntruSearch__.
 
 ## Prerequisites
 
