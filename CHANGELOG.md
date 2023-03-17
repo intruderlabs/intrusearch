@@ -18,7 +18,8 @@ Exceptions are acceptable depending on the circumstances (critical bug fixes tha
 
 ### Added
 
--
+- added `README.md` about the library to the community - [4157141881](https://intruderlabs.monday.com/boards/3790337872/pulses/4157141881)
+- added `CONTRIBUTING.md` and `CODE_OF_CONDUCT.md` to the community - [4157141881](https://intruderlabs.monday.com/boards/3790337872/pulses/4157141881)
 
 ### Changed
 
@@ -26,6 +27,7 @@ Exceptions are acceptable depending on the circumstances (critical bug fixes tha
 - corrected the attempt to read the `io.ReadCloser` more than once in the method `doRequest` - [RD-175](https://intruderlabs.atlassian.net/browse/RD-175)
 - created method for search with `hidra` - [RD-151](https://intruderlabs.atlassian.net/browse/RD-151)
 - created file `client_interface` and add methods inside - [RD-43.19](https://intruderlabs.monday.com/boards/3797906866/pulses/3984323973)
+- code sample has been improved in `README.md` - [4162823734](https://intruderlabs.monday.com/boards/3790337872/pulses/4162823734)
 
 ### Removed
 
