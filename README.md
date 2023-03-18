@@ -33,25 +33,24 @@ go install
 Once installed, you can start using Intrusearch in your Go code:
 
 ```go
-import "github.com/IntruderLabs/intrusearch"
+package main
+
+import (
+	intrusearch "github.com/intruderlabs/intrusearch/main"
+)
 
 func main() {
-    // Create a new searcher
-    searcher, err := intrusearch.New("/path/to/directory")
-    if err != nil {
-        // Handle error
-    }
+	client := NewSearchClient()
+	client.CreateIndex("test")
+}
 
-    // Search for a string in the files
-    results, err := searcher.Search("hello world")
-    if err != nil {
-        // Handle error
-    }
+func NewSearchClient() *intrusearch.Client {
+	openSearchAddress := "http://127.0.0.1" // OpenSearch address
+	awsSamLocal := true                     // is your environment development? (debug mode)
 
-    // Print the results
-    for _, result := range results {
-        fmt.Println(result.Filename, result.LineNumber, result.Line)
-    }
+	client := intrusearch.NewClient(openSearchAddress, awsSamLocal) // instance for creating a new OpenSearch client
+
+	return &client
 }
 ```
 
