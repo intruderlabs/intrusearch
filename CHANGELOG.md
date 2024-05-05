@@ -20,6 +20,7 @@ Exceptions are acceptable depending on the circumstances (critical bug fixes tha
 
 - added `README.md` about the library to the community - [4157141881](https://intruderlabs.monday.com/boards/3790337872/pulses/4157141881)
 - added `CONTRIBUTING.md` and `CODE_OF_CONDUCT.md` to the community - [4157141881](https://intruderlabs.monday.com/boards/3790337872/pulses/4157141881)
+- added feature to search by index _id
 
 ### Changed
 
