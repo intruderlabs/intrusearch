@@ -30,3 +30,23 @@ func (itself Client) ClientSearchRequest(
 	}
 	return response, mapped
 }
+
+func (itself Client) ClientIdSearchRequest(
+	id []string,
+) (
+	responses.OsResponse,
+	[]errors.GenericError,
+) {
+	logger.Info("initialize search request in db ")
+
+	wrapper, mapped := requests.DoRequest(itself.client, opensearchapi.SearchRequest{
+		Index: id,
+	})
+
+	response := responses.OsResponse{}
+
+	if wrapper.Success {
+		helpers.NewSerializationHelper().FromBytes(wrapper.Body, &response)
+	}
+	return response, mapped
+}
