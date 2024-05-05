@@ -32,7 +32,7 @@ func (itself Client) ClientSearchRequest(
 }
 
 func (itself Client) ClientIdSearchRequest(
-	id []string,
+	ids []string,
 ) (
 	responses.OsResponse,
 	[]errors.GenericError,
@@ -40,7 +40,7 @@ func (itself Client) ClientIdSearchRequest(
 	logger.Info("initialize search request in db ")
 
 	wrapper, mapped := requests.DoRequest(itself.client, opensearchapi.SearchRequest{
-		Index: id,
+		Index: ids,
 	})
 
 	response := responses.OsResponse{}

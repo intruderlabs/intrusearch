@@ -16,4 +16,5 @@ type ClientInterface interface {
 	CreateIndexTemplate(indexName string, properties entities.IndexTemplateMappingProperties) (bool, []errors.GenericError)
 	Initialize(indexName string, properties entities.IndexTemplateMappingProperties) error
 	ClientSearchRequest(queryPaginationRequest requests.OsSearchRequest) (responses.OsResponse, []errors.GenericError)
+	ClientIdSearchRequest(ids []string) (responses.OsResponse, []errors.GenericError)
 }
