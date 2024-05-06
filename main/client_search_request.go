@@ -32,16 +32,14 @@ func (itself Client) ClientSearchRequest(
 }
 
 func (itself Client) ClientIdSearchRequest(
-	ids []string,
+	id string,
 ) (
 	responses.OsResponse,
 	[]errors.GenericError,
 ) {
-	logger.Info("initialize search request in db ")
+	logger.Info("initialize ID search request in db!")
 
-	wrapper, mapped := requests.DoRequest(itself.client, opensearchapi.SearchRequest{
-		Index: ids,
-	})
+	wrapper, mapped := requests.DoRequest(itself.client, opensearchapi.IndexRequest{DocumentID: id})
 
 	response := responses.OsResponse{}
 
