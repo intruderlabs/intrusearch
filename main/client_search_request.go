@@ -1,12 +1,14 @@
 package intrusearch
 
 import (
+	"fmt"
 	"github.com/intruderlabs/intrusearch/main/domain/errors"
 	"github.com/intruderlabs/intrusearch/main/domain/helpers"
 	"github.com/intruderlabs/intrusearch/main/infrastructure/requests"
 	"github.com/intruderlabs/intrusearch/main/infrastructure/responses"
 	"github.com/opensearch-project/opensearch-go/opensearchapi"
 	logger "github.com/sirupsen/logrus"
+	"io"
 )
 
 func (itself Client) ClientSearchRequest(
@@ -32,6 +34,7 @@ func (itself Client) ClientSearchRequest(
 }
 
 func (itself Client) ClientIdSearchRequest(
+	index string,
 	id string,
 ) (
 	responses.OsResponse,
@@ -39,12 +42,26 @@ func (itself Client) ClientIdSearchRequest(
 ) {
 	logger.Info("initialize ID search request in db!")
 
-	wrapper, mapped := requests.DoRequest(itself.client, opensearchapi.IndexRequest{DocumentID: id})
+	var mappedErrors []errors.GenericError
+	indexResponse, err := itself.client.Get(index, id)
+
+	if err != nil {
+		logger.Errorln("ClientIdSearchRequest()->Get():", err)
+		mappedErrors = append(mappedErrors, errors.GenericError{"osd_error", fmt.Sprintf("%s", err)})
+		return responses.OsResponse{}, make([]errors.GenericError, 0)
+	}
 
 	response := responses.OsResponse{}
+	indexResponseBytes, err := io.ReadAll(indexResponse.Body)
 
-	if wrapper.Success {
-		helpers.NewSerializationHelper().FromBytes(wrapper.Body, &response)
+	if err != nil {
+		logger.Errorln("ClientIdSearchRequest()->ReadAll():", err)
+		mappedErrors = append(mappedErrors, errors.GenericError{"response_error", fmt.Sprintf("%s", err)})
 	}
-	return response, mapped
+
+	if indexResponse.StatusCode == 200 {
+		helpers.NewSerializationHelper().FromBytes(indexResponseBytes, &response)
+	}
+
+	return response, mappedErrors
 }
