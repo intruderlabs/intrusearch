@@ -21,6 +21,8 @@ var headerContentTypeJSON = []string{"application/json"}
 func DoRequest(transport opensearchapi.Transport, request opensearchapi.Request) (domain.GenericResponse, []errors.GenericError) {
 	response, err := request.Do(context.Background(), transport)
 
+	logger.Infoln("=> OSD Request: ", request)
+
 	acceptedCodes := map[int]bool{
 		http.StatusOK:        true,
 		http.StatusCreated:   true,
@@ -33,7 +35,7 @@ func DoRequest(transport opensearchapi.Transport, request opensearchapi.Request)
 	}
 	defer response.Body.Close()
 
-	return mapFromRequestError(domain.GenericResponse{
+	return MapFromRequestError(domain.GenericResponse{
 		Success: err == nil && acceptedCodes[response.StatusCode],
 		Status:  response.StatusCode,
 		Body:    bodyBytes,
@@ -41,7 +43,7 @@ func DoRequest(transport opensearchapi.Transport, request opensearchapi.Request)
 }
 
 // TODO: this code needs to be changed to be better
-func mapFromRequestError(wrapper domain.GenericResponse, err error) (domain.GenericResponse, []errors.GenericError) {
+func MapFromRequestError(wrapper domain.GenericResponse, err error) (domain.GenericResponse, []errors.GenericError) {
 	var mapped []errors.GenericError
 
 	if err != nil {
