@@ -63,5 +63,6 @@ func (itself Client) ClientIdSearchRequest(
 
 	helpers.NewSerializationHelper().FromBytes(indexResponseBytes, &response)
 
+	response.Hits.Total.Value = indexResponse.StatusCode
 	return response, mappedErrors
 }
