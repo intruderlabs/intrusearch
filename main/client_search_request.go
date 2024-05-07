@@ -59,9 +59,9 @@ func (itself Client) ClientIdSearchRequest(
 		mappedErrors = append(mappedErrors, errors.GenericError{"response_error", fmt.Sprintf("%s", err)})
 	}
 
-	if indexResponse.StatusCode == 200 {
-		helpers.NewSerializationHelper().FromBytes(indexResponseBytes, &response)
-	}
+	logger.Infoln("ClientIdSearchRequest HTTP status code:", indexResponse.StatusCode)
+
+	helpers.NewSerializationHelper().FromBytes(indexResponseBytes, &response)
 
 	return response, mappedErrors
 }
