@@ -23,6 +23,7 @@ func (itself Client) ClientSearchRequest(
 		Size:  &queryPaginationRequest.Size,
 		From:  &queryPaginationRequest.From,
 		Query: queryPaginationRequest.QueryString,
+		Index: queryPaginationRequest.Index,
 	})
 
 	response := responses.OsResponse{}
