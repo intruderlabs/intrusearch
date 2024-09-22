@@ -21,8 +21,6 @@ var headerContentTypeJSON = []string{"application/json"}
 func DoRequest(transport opensearchapi.Transport, request opensearchapi.Request) (domain.GenericResponse, []errors.GenericError) {
 	response, err := request.Do(context.Background(), transport)
 
-	logger.Infoln("=> OSD Request: ", request)
-
 	acceptedCodes := map[int]bool{
 		http.StatusOK:        true,
 		http.StatusCreated:   true,

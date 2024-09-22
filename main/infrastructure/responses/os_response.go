@@ -1,6 +1,11 @@
 package responses
 
-import "time"
+import (
+	"encoding/json"
+	"fmt"
+	"strings"
+	"time"
+)
 
 type Source struct {
 	URL       string    `json:"url"`
@@ -9,6 +14,35 @@ type Source struct {
 	Links     []string  `json:"links"`
 	Timestamp time.Time `json:"@timestamp"`
 }
+
+func (s *Source) UnmarshalJSON(data []byte) error {
+	type Alias Source
+	aux := &struct {
+		Content json.RawMessage `json:"content"`
+		*Alias
+	}{
+		Alias: (*Alias)(s),
+	}
+
+	if err := json.Unmarshal(data, &aux); err != nil {
+		return err
+	}
+
+	var content string
+	if err := json.Unmarshal(aux.Content, &content); err == nil {
+		s.Content = content
+		return nil
+	}
+
+	var contents []string
+	if err := json.Unmarshal(aux.Content, &contents); err == nil {
+		s.Content = strings.Join(contents, ",")
+		return nil
+	}
+
+	return fmt.Errorf("content field is neither a string nor an array of strings")
+}
+
 type OsResponse struct {
 	Took     int  `json:"took"`
 	TimedOut bool `json:"timed_out"`

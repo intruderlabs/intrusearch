@@ -31,6 +31,7 @@ func (itself Client) ClientSearchRequest(
 	if wrapper.Success {
 		helpers.NewSerializationHelper().FromBytes(wrapper.Body, &response)
 	}
+
 	return response, mapped
 }
 

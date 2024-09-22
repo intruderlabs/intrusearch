@@ -13,8 +13,10 @@ type Client struct {
 	client *opensearch.Client
 }
 
-func NewClient(address string, coloredLogger bool) Client {
+func NewClient(address string, username, password string, coloredLogger bool) Client {
 	client, _ := opensearch.NewClient(opensearch.Config{
+		Username: username,
+		Password: password,
 		Transport: &http.Transport{
 			TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
 		},
