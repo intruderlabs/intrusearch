@@ -48,7 +48,7 @@ func (itself Client) ClientIdSearchRequest(
 
 	if err != nil {
 		logger.Errorln("ClientIdSearchRequest()->Get():", err)
-		mappedErrors = append(mappedErrors, errors.GenericError{"osd_error", fmt.Sprintf("%s", err)})
+		mappedErrors = append(mappedErrors, errors.GenericError{Type: "osd_error", Reason: fmt.Sprintf("%s", err)})
 		return responses.OsResponse{}, make([]errors.GenericError, 0)
 	}
 
@@ -57,7 +57,7 @@ func (itself Client) ClientIdSearchRequest(
 
 	if err != nil {
 		logger.Errorln("ClientIdSearchRequest()->ReadAll():", err)
-		mappedErrors = append(mappedErrors, errors.GenericError{"response_error", fmt.Sprintf("%s", err)})
+		mappedErrors = append(mappedErrors, errors.GenericError{Type: "response_error", Reason: fmt.Sprintf("%s", err)})
 	}
 
 	logger.Infoln("ClientIdSearchRequest HTTP status code:", indexResponse.StatusCode)
