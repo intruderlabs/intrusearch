@@ -6,9 +6,12 @@ type Source struct {
 	URL       string    `json:"url"`
 	Content   string    `json:"content"`
 	Body      string    `json:"body"`
+	Channel   string    `json:"channel"`
 	Links     []string  `json:"links"`
+	FoundAt   string    `json:"foundAt"`
 	Timestamp time.Time `json:"@timestamp"`
 }
+
 type OsResponse struct {
 	Took     int  `json:"took"`
 	TimedOut bool `json:"timed_out"`

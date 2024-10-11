@@ -22,6 +22,7 @@ Exceptions are acceptable depending on the circumstances (critical bug fixes tha
 - added `CONTRIBUTING.md` and `CODE_OF_CONDUCT.md` to the community - [4157141881](https://intruderlabs.monday.com/boards/3790337872/pulses/4157141881)
 - added feature to search by index _id
 - added the field `index` in the search_request
+- added source in the OS response body - [PDT-10](https://intruderlabs.atlassian.net/browse/PDT-10)
 
 ### Changed
 
