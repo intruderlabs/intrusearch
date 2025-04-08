@@ -25,6 +25,10 @@ Exceptions are acceptable depending on the circumstances (critical bug fixes tha
 - added the field `index` in the search_request
 - added source in the OS response body - [PDT-10](https://intruderlabs.atlassian.net/browse/PDT-10)
 
+### Fixed
+
+- fixed `ClientSearchRaw` to return `GenericResponse`
+
 ### Changed
 
 - corrected the error deserialization when it's not found response
