@@ -39,4 +39,4 @@ Exceptions are acceptable depending on the circumstances (critical bug fixes tha
 
 ### Removed
 
--
+- Removed the policy template creation file - ``main/client_create_index_policy.go``
