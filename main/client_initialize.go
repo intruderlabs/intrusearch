@@ -20,7 +20,6 @@ func (itself Client) Initialize(
 		func(indexName string) (bool, []derrors.GenericError) {
 			return itself.CreateIndexTemplate(indexName, properties)
 		},
-		itself.CreateIndexPolicy,
 		itself.CreateIndex,
 		itself.CreateIndexPattern,
 	}
